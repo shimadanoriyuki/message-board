@@ -17,6 +17,20 @@
     
     <div class="panel-body">
     <%= form_for(@message, html: {class: 'form-horizontal'}) do |f| %>
+    
+        <% if @message.errors.present? %>
+            <div class="alert alert-danger">
+              <%= alert %>
+              <ul>
+                <% @message.errors.full_messages.each do |full_message| %>
+                  <li>
+                    <%= full_message %>
+                  </li>
+                <% end %> 
+              </ul>
+            </div>
+          <% end %>
+    
         <div class="form-group">
             <label for="messageName" class="col-sm-2 control-label"><strong>名前：</strong></label>
             <div class="col-sm-8"><%= f.text_field :name, class: 'form-control', id: 'messageName' %></div>
