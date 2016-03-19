@@ -12,11 +12,24 @@
     </div>
 </div>
 
-<%= form_for(@message) do |f| %>
-    名前：
-    <%= f.text_field :name %>
+<div class="panel panel-primary">
+    <div class="panel-heading">メッセージ入力</div>
     
-    内容：
-    <%= f.text_field :body %>
-    <%= f.submit class: "btn btn-sm btn-primary" %>
-<% end %>
+    <div class="panel-body">
+    <%= form_for(@message, html: {class: 'form-horizontal'}) do |f| %>
+        <div class="form-group">
+            <label for="messageName" class="col-sm-2 control-label"><strong>名前：</strong></label>
+            <div class="col-sm-8"><%= f.text_field :name, class: 'form-control', id: 'messageName' %></div>
+        </div>
+        <div class="form-group">
+            <label for="messageBody" class="col-sm-2 control-label"><strong>内容：</strong></label>
+            <div class="col-sm-8"><%= f.text_area :body, class: 'form-control', id: 'messageBody' %></div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+            <%= f.submit class: "btn btn-primary btn-lg", value:"送信" %>
+            </div>
+        </div>
+    <% end %>
+    </div>
+</div>
